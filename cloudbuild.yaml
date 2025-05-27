@@ -4,8 +4,8 @@ steps:
     args:
       - 'compute'
       - 'ssh'
-      - 'vm-ti4k'  # Replace with the name of your Compute Engine VM instance
-      - '--zone=us-central1-c'  # Replace with the zone of your Compute Engine VM instance
+      - 'vm-ashdiqqi'  # Replace with the name of your Compute Engine VM instance
+      - '--zone=asia-southeast2-a	'  # Replace with the zone of your Compute Engine VM instance
       - '--command=sudo apt-get update && sudo apt-get install -y mysql-server php-mysql && sudo systemctl restart apache2'
 
   # Step 1: Deploy the application to Compute Engine VM
@@ -13,8 +13,8 @@ steps:
     args:
       - 'compute'
       - 'ssh'
-      - 'vm-ti4k'  # Replace with the name of your Compute Engine VM instance
-      - '--zone=us-central1-c'  # Replace with the zone of your Compute Engine VM instance
+      - 'vm-ashdiqqi'  # Replace with the name of your Compute Engine VM instance
+      - '--zone=asia-southeast2-a	'  # Replace with the zone of your Compute Engine VM instance
       - '--command=cd /var/www/html/contacts && git pull origin main'
     dir: '/var/www/html/contacts'  # Specify the directory where your source code is cloned
 
@@ -23,8 +23,8 @@ steps:
     args:
       - 'compute'
       - 'ssh'
-      - 'vm-ti4k'  # Replace with the name of your Compute Engine VM instance
-      - '--zone=us-central1-c'  # Replace with the zone of your Compute Engine VM instance
+      - 'vm-ashdiqqi'  # Replace with the name of your Compute Engine VM instance
+      - '--zone=asia-southeast2-a'  # Replace with the zone of your Compute Engine VM instance
       - '--command=sudo mysql -u root < /var/www/html/contacts/data.sql'
     dir: '/var/www/html/contacts'  # Specify the directory where your source code is cloned
 
@@ -32,4 +32,5 @@ steps:
 timeout: '1200s'
 
 # Where to put build log
+options:
 logging: CLOUD_LOGGING_ONLY
